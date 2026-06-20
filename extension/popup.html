@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalForm AI</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">⌁</div>
+          <div>
+            <h1>LocalForm</h1>
+            <p>Local autofill</p>
+          </div>
+        </div>
+        <button id="openOptions" class="icon-btn" type="button" title="Settings" aria-label="Settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.6a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8Zm8.3 3.1-1.7-.8c-.1-.4-.3-.9-.5-1.3l.6-1.8-2.5-2.5-1.8.6c-.4-.2-.8-.4-1.3-.5L12.3 3H8.7l-.8 1.7c-.5.1-.9.3-1.3.5l-1.8-.6-2.5 2.5.6 1.8c-.2.4-.4.8-.5 1.3l-1.7.8v3.6l1.7.8c.1.5.3.9.5 1.3l-.6 1.8 2.5 2.5 1.8-.6c.4.2.8.4 1.3.5l.8 1.7h3.6l.8-1.7c.5-.1.9-.3 1.3-.5l1.8.6 2.5-2.5-.6-1.8c.2-.4.4-.8.5-1.3l1.7-.8v-3.6Z" fill="currentColor"/></svg>
+        </button>
+      </header>
+
+      <section class="status-card">
+        <div class="status-dot" id="statusDot"></div>
+        <div class="status-copy">
+          <strong id="statusTitle">Checking Ollama</strong>
+          <span id="statusText">localhost:11434</span>
+        </div>
+        <button id="startOllamaBtn" class="mini-action" type="button" hidden>Start</button>
+      </section>
+
+      <section class="mini-grid">
+        <button id="queueBtn" class="tile" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v3H4V5Zm0 5h16v3H4v-3Zm0 5h10v3H4v-3Zm13.8.1 1.4 1.4-3.9 3.9-2.3-2.3 1.4-1.4.9.9 2.5-2.5Z" fill="currentColor"/></svg>
+          <span>Queue</span>
+        </button>
+        <button id="scanBtn" class="tile" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.8C4 4.8 4.8 4 5.8 4h12.4c1 0 1.8.8 1.8 1.8v12.4c0 1-.8 1.8-1.8 1.8H5.8c-1 0-1.8-.8-1.8-1.8V5.8Zm3 1.7v2h10v-2H7Zm0 4v2h10v-2H7Zm0 4v1.2h6v-1.2H7Z" fill="currentColor"/></svg>
+          <span>Scan</span>
+        </button>
+        <button id="fillBtn" class="tile primary" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.3 4.4 19.6 8 9.8 19.5l-4.6 1 1.5-4.5 8.6-11.6Zm1.1-1.3c.7-.8 1.9-.9 2.7-.2l1 .8c.8.7.9 1.9.2 2.7l-.3.4-4-3.3.4-.4Z" fill="currentColor"/></svg>
+          <span>Fill</span>
+        </button>
+      </section>
+
+      <section class="result" id="resultBox" hidden>
+        <div class="result-head">
+          <strong id="formTitle">No form</strong>
+          <span id="questionCount">0 fields</span>
+        </div>
+        <div id="answerList" class="answer-list"></div>
+      </section>
+
+      <footer>
+        <span>Review first</span>
+        <span>No submit</span>
+      </footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

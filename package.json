@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "test": "node scripts/test-rules.js",
+    "test:ai": "node scripts/test-real-ai.js"
+  }
+}

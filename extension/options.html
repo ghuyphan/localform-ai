@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalForm Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <aside class="rail">
+        <div class="brand">
+          <div class="logo">⌁</div>
+          <div>
+            <h1>LocalForm</h1>
+          </div>
+        </div>
+        <nav>
+          <a href="#profile">Profile</a>
+          <a href="#work">Work</a>
+          <a href="#ai">AI</a>
+          <a href="#context">Context</a>
+          <a href="#companion">Companion</a>
+        </nav>
+      </aside>
+
+      <section class="content">
+        <header class="hero">
+          <div>
+            <p class="eyebrow">LocalForm</p>
+            <h2>Autofill profile</h2>
+          </div>
+          <button id="saveBtn" class="save" type="button">Save</button>
+        </header>
+
+        <section id="profile" class="card">
+          <div class="card-head">
+            <h3>Profile</h3>
+          </div>
+          <div class="grid two">
+            <label>Full name<input data-profile="fullName" /></label>
+            <label>Creator name<input data-profile="creatorName" /></label>
+            <label>TikTok handle<input data-profile="tiktokHandle" placeholder="sau @" /></label>
+            <label>TikTok URL<input data-profile="tiktokUrl" placeholder="https://www.tiktok.com/@..." /></label>
+            <label>Facebook URL<input data-profile="facebookUrl" /></label>
+            <label>YouTube URL<input data-profile="youtubeUrl" /></label>
+            <label>Followers<input data-profile="followers" /></label>
+            <label>GMV 30 days<input data-profile="gmv30Days" /></label>
+            <label>Sold 30 days<input data-profile="sold30Days" /></label>
+            <label>Zalo phone<input data-profile="zaloPhone" /></label>
+            <label>Email<input data-profile="email" /></label>
+            <label>Platforms<input data-profile="platforms" placeholder="TikTok, Facebook" /></label>
+          </div>
+        </section>
+
+        <section id="work" class="card">
+          <div class="card-head">
+            <h3>Work</h3>
+          </div>
+          <div class="grid two">
+            <label>Content niche<input data-profile="contentNiche" placeholder="beauty, lifestyle" /></label>
+            <label>Video style<input data-profile="videoStyle" placeholder="review thật, unbox" /></label>
+            <label>Product preference<input data-profile="productPreference" /></label>
+            <label>Deliverables<input data-profile="deliverables" placeholder="LIVE, VIDEO, CẢ 2" /></label>
+            <label>Freecast<input data-profile="freecastStatus" placeholder="Có / Không" /></label>
+            <label>Livestream cadence<input data-profile="livestreamCadence" placeholder="4 buổi/tuần" /></label>
+            <label>Hours per live<input data-profile="livestreamHours" placeholder="2" /></label>
+            <label>Post deadline<input data-profile="postingDeadlineDays" placeholder="5-6 ngày" /></label>
+            <label>MCN / agency status<input data-profile="mcnStatus" placeholder="Đã tham gia UpBase / Chưa tham gia" /></label>
+            <label>Recipient name<input data-profile="recipientName" /></label>
+            <label class="wide">Shipping address<textarea data-profile="shippingAddress" rows="3"></textarea></label>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h3>Rates</h3>
+          </div>
+          <div class="grid three">
+            <label>YouTube video<input data-profile="youtubeRate" placeholder="1000000" /></label>
+            <label>Facebook reel/post<input data-profile="facebookRate" placeholder="500000" /></label>
+            <label>TikTok video<input data-profile="tiktokRate" placeholder="700000" /></label>
+          </div>
+        </section>
+
+        <section id="ai" class="card">
+          <div class="card-head">
+            <h3>AI</h3>
+          </div>
+          <div class="grid two">
+            <label>Endpoint<input id="endpoint" placeholder="http://localhost:11434" /></label>
+            <label>Model<input id="model" placeholder="qwen2.5:7b" /></label>
+            <label>Temperature<input id="temperature" type="number" min="0" max="1" step="0.1" /></label>
+            <label>Confidence threshold<input id="confidenceThreshold" type="number" min="0" max="1" step="0.05" /></label>
+            <label class="check wide"><input id="magicMode" type="checkbox" /> Magic mode: draft and fill when a Google Form opens</label>
+            <label class="check wide"><input id="autoFillLowConfidence" type="checkbox" /> Fill low-confidence fields too</label>
+            <label class="check wide"><input id="autoStartOllama" type="checkbox" /> Auto-start Ollama with companion</label>
+            <label>Magic delay ms<input id="magicDelayMs" type="number" min="300" step="100" /></label>
+          </div>
+        </section>
+
+        <section id="companion" class="card">
+          <div class="card-head">
+            <h3>Companion</h3>
+          </div>
+          <div class="grid two">
+            <label>Native host name<input id="nativeHostName" readonly /></label>
+            <label>Launch timeout ms<input id="launchTimeoutMs" type="number" min="3000" step="1000" /></label>
+          </div>
+        </section>
+
+        <section id="context" class="card">
+          <div class="card-head split">
+            <div class="head-left">
+              <h3>Context</h3>
+            </div>
+            <button id="addContext" class="ghost" type="button">Add</button>
+          </div>
+          <div id="contexts" class="contexts"></div>
+        </section>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" hidden>Saved</div>
+    <script src="options.js"></script>
+  </body>
+</html>

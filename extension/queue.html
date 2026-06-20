@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalForm Queue</title>
+    <link rel="stylesheet" href="queue.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <div class="brand">
+          <div class="logo">⌁</div>
+          <div>
+            <h1>Queue</h1>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="clearDoneBtn" type="button">Clear</button>
+          <button id="optionsBtn" type="button">Settings</button>
+        </div>
+      </header>
+
+      <section class="composer">
+        <textarea id="linkInput" rows="5" placeholder="Paste form links"></textarea>
+        <div class="bar">
+          <label class="switch"><input id="autoSubmit" type="checkbox" /> Auto-submit ready</label>
+          <span id="inputHint" class="hint">0 links</span>
+          <button id="addBtn" type="button">Add</button>
+          <button id="runBtn" class="primary" type="button">Run</button>
+        </div>
+      </section>
+
+      <section class="summary" id="summary">
+        <span>0 queued</span>
+        <span>0 running</span>
+        <span>0 ready</span>
+        <span>0 needs review</span>
+        <span>0 submitted</span>
+      </section>
+
+      <section id="emptyState" class="empty">
+        <strong>No forms</strong>
+      </section>
+      <section id="list" class="list"></section>
+    </main>
+
+    <template id="itemTemplate">
+      <article class="item">
+        <div class="item-main">
+          <div>
+            <strong class="title">Google Form</strong>
+            <a class="url" target="_blank" rel="noreferrer"></a>
+          </div>
+          <span class="badge">Queued</span>
+        </div>
+        <div class="stats"></div>
+        <div class="progress" aria-hidden="true"></div>
+        <div class="unknowns"></div>
+        <div class="actions">
+          <button class="open" type="button">Open</button>
+          <button class="retry" type="button">Retry</button>
+          <button class="apply" type="button">Apply</button>
+          <button class="submit" type="button">Submit</button>
+          <button class="close-tab" type="button">Close</button>
+          <button class="remove danger" type="button">Remove</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="queue.js"></script>
+  </body>
+</html>
