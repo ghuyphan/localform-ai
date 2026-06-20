@@ -9,8 +9,8 @@ The extension keeps the boring fields deterministic and lets the model help with
 - Local Ollama chat for form answers
 - Google Forms scanner and filler
 - Profile-backed answers for names, links, phone, email, rates, GMV, followers, address, freecast, MCN status, and livestream details
-- Magic Mode for automatic draft/fill when a form opens
-- Queue Mode for processing multiple form links
+- Auto-draft for the current form
+- Queue for processing multiple form links
 - Native companion host that can start Ollama and proxy local requests when Chrome origin rules get in the way
 - Review-first behavior for skipped, low-confidence, unsupported, or risky fields
 
@@ -49,15 +49,13 @@ scripts/         Regression and real-Ollama eval tests
 
 ## Usage
 
-### Magic Mode
+### Current Form
 
-Open a Google Form. LocalForm scans it, drafts answers locally, fills safe fields, and marks anything that needs review.
+Open a Google Form and click **Draft**. LocalForm scans it, drafts answers locally, fills safe fields, and marks anything that needs review.
 
-### Popup Mode
+Turn on **Auto-draft forms when opened** if you want that same flow to run as soon as a Google Form opens.
 
-Open a Google Form, click the extension icon, then use **Scan** and **Fill**.
-
-### Queue Mode
+### Queue
 
 Click **Queue** in the popup, paste Google Form links, then run the queue. Each form opens in an inactive tab, gets drafted and filled, and ends in one of these states:
 
@@ -66,7 +64,7 @@ Click **Queue** in the popup, paste Google Form links, then run the queue. Each 
 - `Submitted`: submitted from the queue
 - `Error`: login, closed form, unsupported page, or another failure
 
-Queue Mode can submit ready forms, but it only does that after the form has no skipped, review, or failed fields.
+Queue can submit ready forms, but it only does that after the form has no skipped, review, or failed fields.
 
 ## Profile Fields
 

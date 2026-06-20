@@ -461,7 +461,7 @@ async function runMagicMode() {
     LF_STATE.magicDoneForUrl = location.href;
     showPanel({
       status: "working",
-      summary: "Magic mode is drafting",
+      summary: "Auto-draft is running",
       note: "Scanning this form and preparing safe local answers."
     });
 
@@ -478,7 +478,7 @@ async function runMagicMode() {
   } catch (error) {
     showPanel({
       status: "error",
-      summary: "Magic mode paused",
+      summary: "Auto-draft paused",
       note: error.message || String(error)
     });
   } finally {

@@ -3,8 +3,8 @@
 ```txt
 Google Form tab
   ↓ content script scans DOM
-Magic Mode, optional
-  ↓ auto-starts draft flow when form opens
+Auto-draft, optional
+  ↓ starts draft flow when form opens
 Popup
   ↓ asks background to generate answers
 Background service worker, Manifest V3
@@ -46,8 +46,8 @@ Responsible for local AI and native-host routing.
 
 Responsible for the small UI.
 
-- Scan button.
-- Fill button.
+- Draft current form.
+- Open Queue.
 - Ollama status.
 - Start Ollama fallback button.
 - Compact answer preview.

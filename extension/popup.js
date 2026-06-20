@@ -1,7 +1,6 @@
 const els = {
   openOptions: document.querySelector("#openOptions"),
   queueBtn: document.querySelector("#queueBtn"),
-  scanBtn: document.querySelector("#scanBtn"),
   fillBtn: document.querySelector("#fillBtn"),
   startOllamaBtn: document.querySelector("#startOllamaBtn"),
   statusDot: document.querySelector("#statusDot"),
@@ -19,7 +18,6 @@ let cachedSettings = null;
 
 function setBusy(isBusy) {
   els.queueBtn.disabled = isBusy;
-  els.scanBtn.disabled = isBusy;
   els.fillBtn.disabled = isBusy;
   els.startOllamaBtn.disabled = isBusy;
 }
@@ -116,10 +114,10 @@ async function scan() {
     if (!resp.ok) throw new Error(resp.error);
     lastForm = resp.form;
     renderForm(lastForm, null);
-    setStatus("ok", "Form scanned", `${lastForm.questions.length} fields found`);
+    setStatus("ok", "Form ready", `${lastForm.questions.length} fields found`);
     return lastForm;
   } catch (error) {
-    setStatus("bad", "Scan failed", error.message || String(error));
+    setStatus("bad", "Draft failed", error.message || String(error));
     throw error;
   } finally {
     setBusy(false);
@@ -152,9 +150,9 @@ async function fill() {
 
     const filled = fillResp.results.filter((r) => r.status === "filled").length;
     const review = fillResp.results.filter((r) => r.status === "review").length;
-    setStatus("ok", "Draft filled", `${filled} filled · ${review} review`);
+    setStatus("ok", "Draft ready", `${filled} filled · ${review} review`);
   } catch (error) {
-    setStatus("bad", "Fill failed", error.message || String(error), { showStart: /Ollama|native|host|fetch/i.test(error.message || "") });
+    setStatus("bad", "Draft failed", error.message || String(error), { showStart: /Ollama|native|host|fetch/i.test(error.message || "") });
   } finally {
     setBusy(false);
   }
@@ -162,7 +160,6 @@ async function fill() {
 
 els.openOptions.addEventListener("click", () => chrome.runtime.openOptionsPage());
 els.queueBtn.addEventListener("click", () => chrome.tabs.create({ url: chrome.runtime.getURL("queue.html") }));
-els.scanBtn.addEventListener("click", () => scan().catch(() => undefined));
 els.fillBtn.addEventListener("click", () => fill().catch(() => undefined));
 els.startOllamaBtn.addEventListener("click", () => startOllama().catch(() => undefined));
 
